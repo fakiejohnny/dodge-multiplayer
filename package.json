@@ -1,0 +1,19 @@
+{
+  "name": "dodge-multiplayer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fakiejohnny/dodge-multiplayer.git"
+  },
+  "author": "CB",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fakiejohnny/dodge-multiplayer/issues"
+  },
+  "homepage": "https://github.com/fakiejohnny/dodge-multiplayer#readme"
+}
