@@ -6,7 +6,7 @@ const io = require('socket.io')(http);
 const uuid = require('uuid/v4');
 const Lobby = require('./src/lobby');
 
-http.listen(3000, function() {
+http.listen(3000, function () {
     console.log('listening on *:3000');
 });
 
@@ -19,7 +19,7 @@ class User {
 
 const lobby = new Lobby(io);
 
-io.on('connection', function(socket) {
+io.on('connection', function (socket) {
     socket.emit('test', 'connected to Server');
 
     socket.broadcast.emit('broadcast', ' a new user has logged in'); //(nicht an den Socket)
@@ -28,7 +28,7 @@ io.on('connection', function(socket) {
 
     lobby.join(user);
 
-    socket.on('disconnect', function() {
+    socket.on('disconnect', function () {
         lobby.leave(user);
     });
 });

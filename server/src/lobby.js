@@ -1,29 +1,30 @@
-class Player {
-    constructor(user) {
-        this.user = user;
-    }
-}
+const utils = require('./utils');
+const Player = require('./player');
 
 class Lobby {
     constructor(io) {
         this.io = io;
         this.players = [];
-        this.size = {
-            width: 1000,
-            height: 800
-        };
+        this.obstacles = null;
+        this.playground = {
+            width: 800,
+            height: 500
+        }
         this.join = this.join.bind(this);
         this.leave = this.leave.bind(this);
         this.emitInitData = this.emitInitData.bind(this);
         setInterval(() => {
-            this.loop();
-        }, 1000);
+            this.gameLoop();
+        }, 16.66666);
+        setInterval(() => {
+            this.emitLoop();
+        }, 16.66666);
         setInterval(() => {
             this.slowLoop();
         }, 5000);
     }
     join(user) {
-        const player = new Player(user);
+        const player = new Player(user, this.playground);
         this.players.push(player);
         this.emitInitData(player)
         console.log('user join');
@@ -35,14 +36,22 @@ class Lobby {
         console.log(this.players.length);
     }
     emitInitData(player) {
-        player.user.socket.emit('init', 'init Daten');
+        player.user.socket.emit('init', this.playground);
     }
-    loop() {
-        /* const data = this.players.map(player => ({
-            position: player.position
-        })) */
+    gameLoop() {
+        this.players.forEach(player => {
+            player.ball.move();
+        });
+    }
+    emitLoop() {
+        const data = this.players.map(player => ({
+            position: player.ball.position,
+            radius: player.ball.radius,
+            angle: player.ball.angle,
+            color: player.ball.color
+        }));
 
-        this.io.emit('public_data', 'public data');
+        this.io.emit('public_data', data);
     }
     slowLoop() {
         this.players.forEach(player => {

@@ -1,4 +1,8 @@
-import { Position, calculateAngel, calculateDistance } from "./utils";
+import {
+    Position,
+    calculateAngel,
+    calculateDistance
+} from "./utils";
 
 function collisionRectCircle(rp, rs, cp, cr) { //rect position, rect size, circle position, circle radius
 
@@ -26,11 +30,14 @@ function collisionRectCircle(rp, rs, cp, cr) { //rect position, rect size, circl
 
 
 function collisionCircleCircle(c1p, c1r, c2p, c2r) { //circle 1 position, circle 1 radius, circle 2 position, circle 2 radius
-    
+
     if (calculateDistance(c1p, c2p) <= c1r + c2r) {
         return true;
     }
     return false;
 };
 
-export {collisionRectCircle, collisionCircleCircle};
+export {
+    collisionRectCircle,
+    collisionCircleCircle
+};
