@@ -7,7 +7,7 @@ export default class Lobby {
         this.obstaclePlayground = new ObstaclePlayground(this);
     }
     join() {
-        console.log('user join');
+        //console.log('user join');
         this.players.push(new Player());
     }
     leave() {

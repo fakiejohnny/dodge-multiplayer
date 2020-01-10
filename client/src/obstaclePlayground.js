@@ -27,6 +27,7 @@ export default class ObstaclePlayground {
 		this.timer += 1;
 		if (this.timer >= 60) {
 			this.timer = 0;
+			//console.log(this.obstacles.length);
 			//hier kommt rein was einmal pro Sekunde aufgerufen werden soll
 			this.reduceTimeInterval();
 		}

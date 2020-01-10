@@ -11,7 +11,7 @@ export default class Obstacle {
         this.color = 'rgb(51,51,51)';
         this.ticks = 0;
         this.canDie = false;
-        this.deathTime = 6000/this.velocity;
+        this.deathTime = 4000/this.velocity;
     }
     countDeath() {
 		this.ticks += 1;
